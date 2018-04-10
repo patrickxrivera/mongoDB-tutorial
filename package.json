@@ -1,0 +1,25 @@
+{
+  "name": "mongoDB-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pxr13/mongoDB-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pxr13/mongoDB-tutorial/issues"
+  },
+  "homepage": "https://github.com/pxr13/mongoDB-tutorial#readme",
+  "dependencies": {
+    "mocha": "^5.0.5",
+    "mongoose": "^5.0.14",
+    "nodemon": "^1.17.3"
+  }
+}
