@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  name: String
+  name: String,
+  postCount: Number
 });
 
 // this ensures the test doesn't recreate the model in --watch mode
