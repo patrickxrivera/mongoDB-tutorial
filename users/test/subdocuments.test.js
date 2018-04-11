@@ -31,4 +31,22 @@ describe('SUBDOCUMENTS', () => {
 
     expect(user.posts[0].title).to.equal('New Post');
   });
+
+  it('can remove a subdocument from an existing record', async () => {
+    let user = new User({
+      name: 'Joe',
+      posts: [{ title: 'New Post' }]
+    });
+
+    await user.save();
+
+    user = await User.findOne({ name: 'Joe' });
+    const post = user.posts[0];
+    post.remove();
+    await user.save();
+
+    user = await User.findOne({ name: 'Joe' });
+
+    expect(user.posts).to.have.length(0);
+  });
 });
