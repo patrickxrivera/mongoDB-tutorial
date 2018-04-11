@@ -18,9 +18,7 @@ describe('MIDDLEWARE', () => {
 
   it('removes blog posts associated w/ a removed user', async () => {
     await joe.remove();
-
     const count = await BlogPost.count();
-
     expect(count).to.equal(0);
   });
 });
