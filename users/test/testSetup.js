@@ -5,10 +5,11 @@ const initTestSetup = () => {
   mongoose.connection.on('error', (err) => console.warn(`Warning: ${err}`));
 
   beforeEach((done) => {
-    // TODO: figure out a much better way to handle this
-    mongoose.connection.collection('users').drop(() => {
-      mongoose.connection.collection('comments').drop(() => {
-        mongoose.connection.collection('blogPost').drop(() => {
+    const { users, comments, blogposts } = mongoose.connection.collections;
+
+    users.drop(() => {
+      comments.drop(() => {
+        blogposts.drop(() => {
           done();
         });
       });
