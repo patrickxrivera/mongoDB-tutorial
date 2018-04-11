@@ -13,14 +13,27 @@ const UserSchema = new Schema({
     required: [true, 'Name is required.']
   },
   posts: [PostSchema],
-  likes: Number
+  likes: Number,
+  blogPosts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'blogPost'
+    }
+  ]
 });
 
 UserSchema.virtual('postCount').get(function() {
   return this.posts.length;
 });
 
-// this ensures the test doesn't recreate the model in --watch mode
-const User = mongoose.models.user || mongoose.model('user', UserSchema);
+UserSchema.pre('remove', async function(next) {
+  const BlogPost = mongoose.model('blogPost');
+
+  await BlogPost.remove({ _id: { $in: this.blogPosts } });
+
+  next();
+});
+
+const User = mongoose.model('user', UserSchema);
 
 module.exports = User;
