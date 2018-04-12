@@ -41,8 +41,8 @@ class ArtistIndex extends Component {
           </p>
         </div>
         <Link to={`artists/${artist._id}`} className="secondary-content">
-           <i className="material-icons">play_arrow</i>
-         </Link>
+          <i className="material-icons">play_arrow</i>
+        </Link>
       </li>
     );
   }
@@ -54,7 +54,9 @@ class ArtistIndex extends Component {
   }
 
   renderEmptyCollection() {
-    if (this.props.artists.all.length) { return; }
+    if (this.props.artists.all.length) {
+      return;
+    }
 
     return (
       <div className="center-align">
